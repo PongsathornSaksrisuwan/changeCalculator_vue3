@@ -1,8 +1,8 @@
 <script setup>
 import { ref, computed, reactive } from 'vue'
 // changeCalculator variable
-let productPrice = ref(100)
-let customerPay = ref(99)
+let productPrice = ref(0)
+let customerPay = ref(0)
 let change = ref(0)
 let typeOfMoneys = [1000, 500, 100, 50, 20, 10, 5, 2, 1];
 let typeOfCashs = reactive([0, 0, 0, 0, 0, 0, 0, 0, 0])
@@ -16,9 +16,7 @@ let changeColorHas = 'color: red'
 
 // -- Reset ทุกอย่างให้กลับไปเริ่มต้นใหม่
 const clearCalculator = () => {
-    for (let i = 0; i < typeOfMoneys.length; i++) {
-        typeOfCashs[i] = 0
-    } // เคลียค่าใน array typeOfCashs 
+    typeOfCashs.forEach((val,index) => typeOfCashs[index] = 0) // เคลียค่าใน array typeOfCashs  
     change.value = 0 // set เงินทอนให้เป็น 0
     showNotEnoughMoney.value = false
     showEqualMoney.value = false
